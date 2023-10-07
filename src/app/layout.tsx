@@ -1,9 +1,9 @@
-import MenuBar from '@/components/Menubar';
+import AuthContext from '@/context/AuthContext';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { cn } from '@/lib/utils';
 import Navbar from '@/components/Navbar';
+import MenuBar from '@/components/Menubar';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,15 +16,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="h-full">
       <body className={`${inter.className} h-full`}>
-        <div className="h-full flex flex-col items-center mx-auto bg-primary max-w-[480px] overflow-y-auto">
-          <header className="w-full pt-4 sticky top-0">
-            <Navbar />
-          </header>
-          <main className="max-w-[480px] flex-[1]">{children}</main>
-          <footer className="h-[48px] w-full border-t">
-            <MenuBar />
-          </footer>
-        </div>
+        <AuthContext>
+          <div className="h-full flex flex-col items-center mx-auto bg-primary max-w-[480px] overflow-y-auto border-black border-8">
+            <header className="w-full py-2 sticky top-0 border-b">
+              <Navbar />
+            </header>
+            <main className="max-w-[480px] flex-[1]">{children}</main>
+            <footer className="h-[48px] w-full border-t">
+              <MenuBar />
+            </footer>
+          </div>
+        </AuthContext>
       </body>
     </html>
   );
