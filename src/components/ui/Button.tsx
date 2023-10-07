@@ -33,10 +33,11 @@ export const buttonVariants = cva(
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
   href?: string;
+  text?: string;
 }
 
 export const Button = forwardRef<HTMLButtonElement, Props>(
-  ({ className, children, href, variant, size, ...props }, ref) => {
+  ({ className, children, href, variant, size, text, ...props }, ref) => {
     if (href) {
       return (
         <Link href={href} className={cn(buttonVariants({ variant, size, className }))}>
@@ -46,6 +47,7 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
     }
     return (
       <button className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props}>
+        {text && text}
         {children}
       </button>
     );
