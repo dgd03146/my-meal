@@ -1,11 +1,12 @@
-import MenuBar from '@/components/Menubar';
+import AuthContext from '@/context/AuthContext';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Navbar from '@/components/Navbar';
-import AuthContext from '@/context/AuthContext';
 
 import './globals.css';
+
+import MenuBar from '@/components/Menubar';
 
 const inter = Inter({ subsets: ['latin'] });
 
