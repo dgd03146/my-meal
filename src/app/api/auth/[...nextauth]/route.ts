@@ -25,7 +25,10 @@ export const authOptions: NextAuthOptions = {
           ...user,
           username: user.email?.split('@')[0] || '',
         };
+<<<<<<< HEAD
         // addUser({ id:, name: user.name || '', image, email, username: email?.split('@')[0] || '' });
+=======
+>>>>>>> e6462b1 (feat: Add reusable button component #4)
       }
       return session;
     },
