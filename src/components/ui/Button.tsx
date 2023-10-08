@@ -21,7 +21,7 @@ export const buttonVariants = cva(
       size: {
         default: 'py-2 px-4 rounded-2xl',
         sm: 'px-2 rounded-md',
-        lg: 'px-8 py-4 rounded-3xl',
+        lg: 'px-6 py-4 rounded-3xl text-2xl',
       },
     },
     // set up default value
@@ -42,6 +42,7 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
     if (href) {
       return (
         <Link href={href} className={cn(buttonVariants({ variant, size, className }))}>
+          {text}
           {children}
         </Link>
       );
