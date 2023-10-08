@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/icons';
 
 import Avatar from './Avatar';
+import { LogoutIcon } from './ui/icons/auth/LoginFilledIcon';
 
 type Routes = '/' | '/login' | '/new' | '/posts' | '/search' | '/bookmark';
 
@@ -50,13 +51,14 @@ const MenuBar = () => {
 
   return (
     <nav className="max-w-[480px] w-full bg-blue-100 mx-auto h-full flex items-center">
-      <ul className="flex w-full justify-between px-4">
+      <ul className="flex w-full justify-between px-4 items-center">
         {menu.map((it) => (
-          <Link className="text-2xl h-full" key={it.href} href={it.href}>
-            {pathName === it.href ? it.clickedIcon : it.icon}
-          </Link>
+          <li key={it.href}>
+            <Link className="text-2xl flex items-center" href={it.href}>
+              {pathName === it.href ? it.clickedIcon : it.icon}
+            </Link>
+          </li>
         ))}
-
         <li>
           {session ? (
             user && (
@@ -65,7 +67,7 @@ const MenuBar = () => {
               </Link>
             )
           ) : (
-            <button onClick={() => signIn()} className="text-2xl">
+            <button onClick={() => signIn()} className="text-2xl flex items-center">
               <LoginIcon />
             </button>
           )}
