@@ -63,7 +63,7 @@ const MenuBar = () => {
           {session ? (
             user && (
               <Link href={`/user/${user.username}`} className="flex items-center">
-                <Avatar image={user.image} />
+                <Avatar image={user.image} highlight />
               </Link>
             )
           ) : (

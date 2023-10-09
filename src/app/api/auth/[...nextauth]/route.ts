@@ -18,17 +18,13 @@ export const authOptions: NextAuthOptions = {
       return true;
     },
     async session({ session }) {
-      console.log(session, 'session');
       const user = session?.user;
       if (user) {
         session.user = {
           ...user,
           username: user.email?.split('@')[0] || '',
         };
-<<<<<<< HEAD
         // addUser({ id:, name: user.name || '', image, email, username: email?.split('@')[0] || '' });
-=======
->>>>>>> e6462b1 (feat: Add reusable button component #4)
       }
       return session;
     },

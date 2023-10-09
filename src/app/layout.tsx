@@ -4,6 +4,7 @@ import { Inter, Libre_Baskerville } from 'next/font/google';
 import '@/styles/global.css';
 
 import Layout from '@/components/Layout';
+import SWRConfigContext from '@/context/SWRConfigContext';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' });
 const libre = Libre_Baskerville({
@@ -24,7 +25,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${inter.className} ${libre.variable} h-full`}>
         <AuthContext>
           <Layout>
-            <main className="max-w-[480px] flex-[1]">{children}</main>
+            <main className="w-[480px] flex-[1] p-4">
+              <SWRConfigContext>{children} </SWRConfigContext>
+            </main>
           </Layout>
         </AuthContext>
       </body>
