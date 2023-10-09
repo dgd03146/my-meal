@@ -21,7 +21,7 @@ const SigninPage = async ({ searchParams: { callbackUrl } }: Props) => {
 
   return (
     <section className="flex justify-center items-center mt-[50%]">
-      <Signin providers={providers} callbackUrl={callbackUrl ?? '/'} />
+      <Signin providers={providers} callbackUrl={callbackUrl ?? '/home'} />
     </section>
   );
 };

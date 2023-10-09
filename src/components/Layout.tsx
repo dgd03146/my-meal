@@ -9,9 +9,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   const isNotHomePage = pathName !== '/';
 
   return (
-    <div className="h-full flex flex-col items-center mx-auto bg-primary max-w-[480px] overflow-y-auto border-4">
+    <div className="h-full flex flex-col items-center mx-auto bg-primary max-w-[480px] overflow-y-auto">
       {isNotHomePage && (
-        <header className="w-full sticky top-0 border-b py-2 max-h-[60px]">
+        <header className="w-full sticky top-0 py-2 max-h-[60px]">
           <Navbar />
         </header>
       )}
