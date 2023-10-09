@@ -25,7 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${inter.className} ${libre.variable} h-full`}>
         <AuthContext>
           <Layout>
-            <main className="max-w-[480px] flex-[1]">
+            <main className="w-[480px] flex-[1] p-4">
               <SWRConfigContext>{children} </SWRConfigContext>
             </main>
           </Layout>

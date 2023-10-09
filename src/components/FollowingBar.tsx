@@ -5,29 +5,28 @@ import useSWR from 'swr';
 import { PacmanLoader } from 'react-spinners';
 import Link from 'next/link';
 import Avatar from './Avatar';
+import ScrollableBar from './ui/ScrollableBar';
 
 function FollowingBar() {
   const { data, isLoading: loading, error } = useSWR<DetailUser>('/api/me');
-  const users = data?.following;
+  const users = data?.following && [...data.following, ...data.following, ...data.following];
 
   return (
-    <section>
+    <section className="w-full flex justify-center items-center min-h-[90px] mb-4 overflow-x-auto">
       {loading ? (
-        <PacmanLoader color="rgb(255,231,144)" />
+        <PacmanLoader color="#121063" />
       ) : (
-        !users || (users.length === 0 && <p>{`You don't have follwing`}</p>)
+        !users || (users.length === 0 && <p className="font-semibold">{`You don't have follwing`}</p>)
       )}
       {users && users.length > 0 && (
-        <ul className="flex">
+        <ScrollableBar>
           {users.map(({ username, image }) => (
-            <li key={username}>
-              <Link href={`/user/${username}`}>
-                <Avatar image={image} size="large" highlight />
-                <p>{username}</p>
-              </Link>
-            </li>
+            <Link key={username} href={`/user/${username}`} className="flex flex-col items-center w-20">
+              <Avatar image={image} size="large" highlight />
+              <p className="w-full text-center font-semibold text-sm overflow-hidden text-ellipsis">{username}</p>
+            </Link>
           ))}
-        </ul>
+        </ScrollableBar>
       )}
     </section>
   );
