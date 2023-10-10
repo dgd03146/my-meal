@@ -12,6 +12,12 @@ const config: Config = {
       primary: 'rgb(209,255,221)',
       secondary: 'rgb(255,231,144)',
       neutral: '#121063',
+      black: '#000000',
+      gray: '#c0c0c0',
+      silver: '#c0c0c0',
+    },
+    screens: {
+      sm: '480px',
     },
     extend: {
       fontFamily: {

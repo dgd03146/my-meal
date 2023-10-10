@@ -50,7 +50,7 @@ const MenuBar = () => {
   const user = session?.user;
 
   return (
-    <nav className="max-w-[480px] w-full bg-blue-100 mx-auto h-full flex items-center">
+    <nav className="max-w-[480px] mx-auto flex items-center h-full border-t-2 border-neutral bg-primary">
       <ul className="flex w-full justify-between px-4 items-center">
         {menu.map((it) => (
           <li key={it.href}>

@@ -3,6 +3,7 @@ import { VariantProps, cva } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
+// border-2 border-r-8 border-b-8 border-neutral
 export const buttonVariants = cva(
   // layout
   'cursor:pointer',
@@ -10,7 +11,7 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-secondary text-black hover:opacity-70 transition-opacity border-2 border-r-8 border-b-8 border-neutral font-semibold text-lg',
+          'bg-secondary text-black hover:opacity-70 transition-opacity font-semibold text-lg shadow-neutral shadow-md',
         destructive: 'bg-red-500 text-white hover:bg-red-600 dark:hover:bg-red-600',
         outline: 'bg-transparent border border-slate-200 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-100',
         subtle: 'bg-slate-100 text-slate-900 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-100',

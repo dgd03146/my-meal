@@ -1,6 +1,6 @@
 import AuthContext from '@/context/AuthContext';
 import type { Metadata } from 'next';
-import { Inter, Libre_Baskerville } from 'next/font/google';
+import { Inter, Libre_Baskerville, IBM_Plex_Mono } from 'next/font/google';
 import '@/styles/global.css';
 
 import Layout from '@/components/Layout';
@@ -13,6 +13,7 @@ const libre = Libre_Baskerville({
   display: 'swap',
   variable: '--font-libre',
 });
+const ibm = IBM_Plex_Mono({ weight: '400', subsets: ['latin'], variable: '--font-ibm' });
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -21,13 +22,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="h-full">
-      <body className={`${inter.className} ${libre.variable} h-full`}>
+    <html lang="en">
+      <body className={`${ibm.className} ${libre.variable} ${inter.variable}`}>
         <AuthContext>
           <Layout>
-            <main className="w-[480px] flex-[1] p-4">
-              <SWRConfigContext>{children} </SWRConfigContext>
-            </main>
+            <SWRConfigContext>{children} </SWRConfigContext>
           </Layout>
         </AuthContext>
       </body>

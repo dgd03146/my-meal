@@ -8,3 +8,8 @@ export { LoginIcon } from './auth/LoginIcon';
 export { LogoutIcon as LoginFilledIcon } from './auth/LoginFilledIcon';
 export { SearchIcon } from './search/SearchIcon';
 export { SearchFilledIcon } from './search/SearchFilledIcon';
+
+export { HeartIcon } from './heart/HeartIcon';
+export { HeartFilledIcon } from './heart/HeartFilledIcon';
+export { SmileIcon } from './smile/SmileIcon';
+export { ArrowIcon } from './arrow/ArrowIcon';
