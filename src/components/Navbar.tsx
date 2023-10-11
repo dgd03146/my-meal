@@ -4,10 +4,10 @@ import { SearchIcon } from './ui/icons';
 
 const Navbar = () => {
   return (
-    <nav className="flex justify-between px-4 items-center max-w-[480px] w-full bg-blue-100 mx-auto h-full">
+    <nav className="flex py-2 justify-between px-4 items-center max-w-[480px] w-full bg-blue-100 mx-auto h-full">
       <Link
         href="/"
-        className="py-2 px-4 bg-secondary text-xl font-bold rounded-xl border-r-4 border-b-4 border-neutral hover:opacity-70 transition-opacity"
+        className="text-neutral text-xl font-bold bg-secondary rounded-2xl px-2 py-1 shadow-neutral shadow-md hover:opacity-70 transition-opacity font-delta"
       >
         TMI
       </Link>

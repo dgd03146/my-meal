@@ -7,17 +7,18 @@ import Navbar from './Navbar';
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const pathName = usePathname();
   const isNotHomePage = pathName !== '/';
+  console.log(isNotHomePage, 'isNothp');
 
   return (
-    <div className="h-full flex flex-col items-center mx-auto bg-primary max-w-[480px] overflow-y-auto">
+    <div className="min-h-full flex flex-col items-center bg-primary w-[375px] sm:w-[480px] mx-auto shadow-xl ">
       {isNotHomePage && (
-        <header className="w-full sticky top-0 py-2 max-h-[60px]">
+        <header className="w-full sticky top-0 bg-primary z-[1001] shadow-md h-[48px]">
           <Navbar />
         </header>
       )}
-      {children}
+      <main className={`w-[375px] sm:w-[480px] flex-[1] ${isNotHomePage ? 'p-4' : 'p-0'}`}> {children}</main>
       {isNotHomePage && (
-        <footer className="h-[48px] w-full border-t">
+        <footer className="w-full h-[48px] fixed bottom-0 left-0 right-0 z-10 shadow-md">
           <MenuBar />
         </footer>
       )}
