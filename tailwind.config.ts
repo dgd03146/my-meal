@@ -23,6 +23,7 @@ const config: Config = {
       fontFamily: {
         inter: ['var(--font-inter)'],
         libre: ['var(--font-libre)'],
+        delta: ['var(--font-delta)'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

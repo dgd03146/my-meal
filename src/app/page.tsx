@@ -8,7 +8,9 @@ export default function LandingPage() {
     <section className="flex items-center flex-col justify-center text-center h-screen gap-y-12">
       <h1 className="text-4xl sm:text-5xl text-neutral">
         {`WHAT'S YOUR `}
-        <span className="bg-secondary text-neutral px-4 py-2 rounded-3xl shadow-lg shadow-neutral">TMI</span>
+        <span className="bg-secondary text-4xl text-neutral px-4 py-2 rounded-3xl shadow-md shadow-neutral font-delta">
+          TMI
+        </span>
       </h1>
       <Image src={background} alt="Background Image" priority />
       <Button

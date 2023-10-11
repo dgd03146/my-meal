@@ -16,7 +16,6 @@ import {
 } from '@/components/ui/icons';
 
 import Avatar from './Avatar';
-import { LogoutIcon } from './ui/icons/auth/LoginFilledIcon';
 
 type Routes = '/' | '/login' | '/new' | '/posts' | '/search' | '/bookmark';
 
@@ -50,7 +49,7 @@ const MenuBar = () => {
   const user = session?.user;
 
   return (
-    <nav className="max-w-[480px] mx-auto flex items-center h-full border-t-2 border-neutral bg-primary">
+    <nav className="max-w-[480px] mx-auto flex items-center h-full bg-primary">
       <ul className="flex w-full justify-between px-4 items-center">
         {menu.map((it) => (
           <li key={it.href}>
@@ -63,7 +62,7 @@ const MenuBar = () => {
           {session ? (
             user && (
               <Link href={`/user/${user.username}`} className="flex items-center">
-                <Avatar image={user.image} highlight />
+                <Avatar image={user.image} size="small" highlight />
               </Link>
             )
           ) : (
