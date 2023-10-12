@@ -1,11 +1,15 @@
+'use client';
+
 import Avatar from './Avatar';
 import Image from 'next/image';
-
 import { parseDate } from '@/utils/date';
 import { SimplePost } from '@/model/post';
-
 import CommentForm from './CommentForm';
 import ActionBar from './ActionBar';
+import { useState } from 'react';
+import ModalPortal from './ui/ModalPortal';
+import PostModal from './PostModal';
+import PostDetail from './PostDetail';
 
 type Props = {
   post: SimplePost;
@@ -14,6 +18,8 @@ type Props = {
 
 function PostListCard({ post, priority = false }: Props) {
   const { userImage, username, image, createdAt, likes, text } = post;
+  const [openModal, setOpenModal] = useState(false);
+
   return (
     <article className="border-b">
       <div className="flex justify-between items-center py-2">
@@ -32,10 +38,18 @@ function PostListCard({ post, priority = false }: Props) {
           width={500}
           height={500}
           priority={priority}
+          onClick={() => setOpenModal(true)}
         />
       </div>
       <ActionBar likes={likes} />
       <CommentForm />
+      {openModal && (
+        <ModalPortal>
+          <PostModal onClose={() => setOpenModal(false)}>
+            <PostDetail post={post}></PostDetail>
+          </PostModal>
+        </ModalPortal>
+      )}
     </article>
   );
 }

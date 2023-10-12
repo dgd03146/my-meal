@@ -7,7 +7,6 @@ import Navbar from './Navbar';
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const pathName = usePathname();
   const isNotHomePage = pathName !== '/';
-  console.log(isNotHomePage, 'isNothp');
 
   return (
     <div className="min-h-full flex flex-col items-center bg-primary w-[375px] sm:w-[480px] mx-auto shadow-xl ">
