@@ -10,6 +10,7 @@ import { useState } from 'react';
 import ModalPortal from './ui/ModalPortal';
 import PostModal from './PostModal';
 import PostDetail from './PostDetail';
+import PostUserAvatar from './PostUserAvatar';
 
 type Props = {
   post: SimplePost;
@@ -23,10 +24,7 @@ function PostListCard({ post, priority = false }: Props) {
   return (
     <article className="border-b">
       <div className="flex justify-between items-center py-2">
-        <div className="flex items-center">
-          <Avatar image={userImage} size="medium" highlight />
-          <span className="font-semibold ml-4">{username}</span>
-        </div>
+        <PostUserAvatar image={userImage} username={username} />
         <p className=" text-neutral">•{parseDate(createdAt)}</p>
       </div>
       <p className="font-bold py-4 font-libre">{text}</p>
@@ -46,7 +44,7 @@ function PostListCard({ post, priority = false }: Props) {
       {openModal && (
         <ModalPortal>
           <PostModal onClose={() => setOpenModal(false)}>
-            <PostDetail post={post}></PostDetail>
+            <PostDetail post={post} />
           </PostModal>
         </ModalPortal>
       )}

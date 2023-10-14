@@ -8,7 +8,7 @@ type Props = {
 export default function PostModal({ onClose, children }: Props) {
   return (
     <section
-      className="fixed top-0 left-0 flex flex-col justify-center items-center w-full h-full bg-primary opacity-80 z-[1002]"
+      className="fixed top-0 left-0 flex flex-col justify-center items-center w-full h-full z-50 bg-primary/70"
       onClick={(event) => {
         if (event.target === event.currentTarget) {
           onClose();
@@ -18,7 +18,7 @@ export default function PostModal({ onClose, children }: Props) {
       <button className="fixed top-0 right-0 p-8 text-neutral" onClick={() => onClose()}>
         <CloseIcon />
       </button>
-      {children}
+      <div className="bg-primary w-4/5 h-3/5 max-w-7xl">{children}</div>
     </section>
   );
 }

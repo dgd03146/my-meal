@@ -12,7 +12,7 @@ function FollowingBar() {
   const users = data?.following && [...data.following, ...data.following, ...data.following];
 
   return (
-    <section className="w-full flex justify-center items-center min-h-[90px] mb-4 overflow-x-auto">
+    <section className="w-full flex justify-center items-center min-h-[90px] mb-4 overflow-x-auto relative z-0">
       {loading ? (
         <PacmanLoader color="#121063" />
       ) : (
