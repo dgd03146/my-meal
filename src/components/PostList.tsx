@@ -8,7 +8,7 @@ import { SimplePost } from '@/model/post';
 import GridSpinner from './ui/GridSpinner';
 
 function PostList() {
-  const { data: posts, isLoading: loading } = useSWR<SimplePost[]>('/api/post');
+  const { data: posts, isLoading: loading } = useSWR<SimplePost[]>('/api/posts');
 
   return (
     <section className="h-full">
