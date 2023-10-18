@@ -14,7 +14,6 @@ const libre = Libre_Baskerville({
   variable: '--font-libre',
 });
 const ibm = IBM_Plex_Mono({ weight: '400', subsets: ['latin'], variable: '--font-ibm' });
-
 const delta = Dela_Gothic_One({ weight: '400', subsets: ['latin'], variable: '--font-delta' });
 
 export const metadata: Metadata = {

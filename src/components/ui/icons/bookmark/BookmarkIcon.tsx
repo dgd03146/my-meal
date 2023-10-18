@@ -1,6 +1,8 @@
-import React from 'react';
-import { BsBookmark } from 'react-icons/bs';
+import { RiBookmarkLine } from 'react-icons/ri';
 
-export const BookmarkIcon = () => {
-  return <BsBookmark className="w-7 h-7" />;
+type Props = {
+  className?: string;
+};
+export const BookmarkIcon = ({ className }: Props) => {
+  return <RiBookmarkLine className={className || 'w-6 h-6'} />;
 };
