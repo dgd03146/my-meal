@@ -1,8 +1,9 @@
 import { client } from './sanity';
 import { SimplePost } from '@/model/post';
 import { urlFor } from './sanity';
+import groq from 'groq';
 
-const simplePostProjection = `...,
+const simplePostProjection = groq`...,
     "username": author->username,
     "userImage": author->image,
     "image": photo,
@@ -15,7 +16,7 @@ const simplePostProjection = `...,
 export async function getFollowingPostsOf(username: string) {
   return client
     .fetch(
-      `*[_type =="post" && author->username == "${username}"
+      groq`*[_type =="post" && author->username == "${username}"
     || author._ref in *[_type == "user" && username == "${username}"].following[]._ref]
     | order(_createdAt desc){
     ${simplePostProjection}
@@ -27,7 +28,7 @@ export async function getFollowingPostsOf(username: string) {
 export async function getPost(id: string) {
   return client
     .fetch(
-      `*[_type == "post" && _id == "${id}"][0]
+      groq`*[_type == "post" && _id == "${id}"][0]
   {...,
   "username": author->username,
   "userImage": author->image,
