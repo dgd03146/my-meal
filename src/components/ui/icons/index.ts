@@ -13,3 +13,4 @@ export { HeartIcon } from './heart/HeartIcon';
 export { HeartFilledIcon } from './heart/HeartFilledIcon';
 export { SmileIcon } from './smile/SmileIcon';
 export { ArrowIcon } from './arrow/ArrowIcon';
+export { PostIcon } from './post/PostIcon';
