@@ -17,28 +17,22 @@ export default function ActionBar({ likes }: Props) {
   return (
     <>
       <div className="flex justify-between items-center my-4 p-4">
-        <ToggleButton
-          toggled={liked}
-          onToggle={setLiked}
-          onIcon={<HeartFilledIcon />}
-          offIcon={<HeartIcon />}
-        />
-        <ToggleButton
-          toggled={bookmarked}
-          onToggle={setBookmarked}
-          onIcon={<BookmarkFilledIcon />}
-          offIcon={<BookmarkIcon />}
-        />
         <p className="text-sm font-bold px-2 py-1 bg-white rounded-xl shadow-neutral shadow-md">{`${
           likes?.length ?? 0
         } ${likes?.length > 1 ? 'likes' : 'like'}`}</p>
         <div className="flex items-center gap-x-4">
-          <Button className="p-1 bg-white rounded-[50%] hover:bg-secondary">
-            <HeartIcon />
-          </Button>
-          <Button className="p-1 bg-white rounded-[50%] hover:bg-secondary">
-            <BookmarkIcon />
-          </Button>
+          <ToggleButton
+            toggled={liked}
+            onToggle={setLiked}
+            onIcon={<HeartFilledIcon />}
+            offIcon={<HeartIcon />}
+          />
+          <ToggleButton
+            toggled={bookmarked}
+            onToggle={setBookmarked}
+            onIcon={<BookmarkFilledIcon />}
+            offIcon={<BookmarkIcon />}
+          />
         </div>
       </div>
     </>
