@@ -53,7 +53,10 @@ export async function getPostsOf(username: string) {
 export async function getLikedPostsOf(username: string) {
   return client
     .fetch(
-      groq`*[_type == "post" && "${username}" in likes[]->username] | order(_createdAt desc){${simplePostProjection}}`,
+      groq`*[_type == "post" && "${username}" in likes[]->username]
+      | order(_createdAt desc){
+        ${simplePostProjection}
+      }`,
     )
     .then(mapPosts);
 }
@@ -61,7 +64,10 @@ export async function getLikedPostsOf(username: string) {
 export async function getSavedPostsOf(username: string) {
   return client
     .fetch(
-      groq`*[_type == "post" && _id in *[_type == "user" && username=="${username}"].bookmarks[]._ref] | order(_createdAt desc){${simplePostProjection}}`,
+      groq`*[_type == "post" && _id in *[_type=="user" && username=="${username}"].bookmarks[]._ref]
+      | order(_createdAt desc){
+        ${simplePostProjection}
+      }`,
     )
     .then(mapPosts);
 }
@@ -69,6 +75,7 @@ export async function getSavedPostsOf(username: string) {
 function mapPosts(posts: SimplePost[]) {
   return posts.map((post: SimplePost) => ({
     ...post,
+    likes: post.likes ?? [],
     image: urlFor(post.image),
   }));
 }
