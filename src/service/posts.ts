@@ -57,6 +57,7 @@ export async function getLikedPostsOf(username: string) {
       | order(_createdAt desc){
         ${simplePostProjection}
       }`,
+      { cache: 'no-store' },
     )
     .then(mapPosts);
 }
@@ -68,6 +69,7 @@ export async function getSavedPostsOf(username: string) {
       | order(_createdAt desc){
         ${simplePostProjection}
       }`,
+      { cache: 'no-store' },
     )
     .then(mapPosts);
 }

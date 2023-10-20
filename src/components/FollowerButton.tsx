@@ -1,8 +1,8 @@
 'use client';
 
-import type { HomeUser, ProfileUser } from '@/model/user';
-import useSWR from 'swr';
+import { ProfileUser } from '@/model/user';
 import { Button } from './ui/Button';
+import useMe from '@/hooks/me';
 
 type Props = {
   user: ProfileUser;
@@ -10,14 +10,14 @@ type Props = {
 
 export default function FollowerButton({ user }: Props) {
   const { username } = user;
-  const { data: loggedInUser } = useSWR<HomeUser>('/api/me');
+  const { user: loggedInUser } = useMe();
 
   const showButton = loggedInUser && loggedInUser.username !== username;
-  const follwing = loggedInUser && loggedInUser.following.find((item) => item.username === username);
+  const following =
+    loggedInUser &&
+    loggedInUser.following.find((item) => item.username === username);
 
-  const text = follwing ? 'Unfollow' : 'Follow';
+  const text = following ? 'UnFollow' : 'Follow';
 
   return <>{showButton && <Button text={text} onClick={() => {}} />}</>;
 }
-
-//  red={text === 'Unfollow'}
