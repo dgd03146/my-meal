@@ -39,7 +39,7 @@ function PostListCard({ post, priority = false }: Props) {
           onClick={() => setOpenModal(true)}
         />
       </div>
-      <ActionBar likes={likes} />
+      <ActionBar post={post} />
       <CommentForm />
       {openModal && (
         <ModalPortal>

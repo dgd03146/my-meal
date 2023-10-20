@@ -14,19 +14,31 @@ export const authOptions: NextAuthOptions = {
         return false;
       }
 
-      addUser({ id, name: name || '', image, email, username: email?.split('@')[0] || '' });
+      addUser({
+        id,
+        name: name || '',
+        image,
+        email,
+        username: email?.split('@')[0] || '',
+      });
       return true;
     },
-    async session({ session }) {
+    async session({ session, token }) {
       const user = session?.user;
       if (user) {
         session.user = {
           ...user,
           username: user.email?.split('@')[0] || '',
+          id: token.id as string,
         };
-        // addUser({ id:, name: user.name || '', image, email, username: email?.split('@')[0] || '' });
       }
       return session;
+    },
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+      }
+      return token;
     },
   },
   pages: {

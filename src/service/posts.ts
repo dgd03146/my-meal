@@ -53,7 +53,11 @@ export async function getPostsOf(username: string) {
 export async function getLikedPostsOf(username: string) {
   return client
     .fetch(
-      groq`*[_type == "post" && "${username}" in likes[]->username] | order(_createdAt desc){${simplePostProjection}}`,
+      groq`*[_type == "post" && "${username}" in likes[]->username]
+      | order(_createdAt desc){
+        ${simplePostProjection}
+      }`,
+      { cache: 'no-store' },
     )
     .then(mapPosts);
 }
@@ -61,11 +65,39 @@ export async function getLikedPostsOf(username: string) {
 export async function getSavedPostsOf(username: string) {
   return client
     .fetch(
-      groq`*[_type == "post" && _id in *[_type == "user" && username=="${username}"].bookmarks[]._ref] | order(_createdAt desc){${simplePostProjection}}`,
+      groq`*[_type == "post" && _id in *[_type=="user" && username=="${username}"].bookmarks[]._ref]
+      | order(_createdAt desc){
+        ${simplePostProjection}
+      }`,
+      { cache: 'no-store' },
     )
     .then(mapPosts);
 }
 
 function mapPosts(posts: SimplePost[]) {
-  return posts.map((post: SimplePost) => ({ ...post, image: urlFor(post.image) }));
+  return posts.map((post: SimplePost) => ({
+    ...post,
+    likes: post.likes ?? [],
+    image: urlFor(post.image),
+  }));
+}
+
+export async function likePost(postId: string, userId: string) {
+  return client
+    .patch(postId) //
+    .setIfMissing({ likes: [] })
+    .append('likes', [
+      {
+        _ref: userId,
+        _type: 'reference',
+      },
+    ])
+    .commit({ autoGenerateArrayKeys: true });
+}
+
+export async function dislikePost(postId: string, userId: string) {
+  return client
+    .patch(postId)
+    .unset([`likes[_ref=="${userId}"]`])
+    .commit();
 }

@@ -4,7 +4,15 @@ type Props = {
   onIcon: React.ReactNode;
   offIcon: React.ReactNode;
 };
-
-export default function ToggleButton({ toggled, onToggle, onIcon, offIcon }: Props) {
-  return <button onClick={() => onToggle(!toggled)}>{toggled ? onIcon : offIcon}</button>;
+export default function ToggleButton({
+  toggled,
+  onToggle,
+  onIcon,
+  offIcon,
+}: Props) {
+  return (
+    <button onClick={() => onToggle(!toggled)}>
+      {toggled ? onIcon : offIcon}
+    </button>
+  );
 }
